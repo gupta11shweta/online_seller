@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.test.myapplication.viewModel.CreateRecordViewModel"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".view.CreateRecordActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:background="@color/colorPrimaryDark">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="@string/pe_orders"
+                android:gravity="center_vertical"
+                android:layout_marginStart="@dimen/margin_ten"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="@dimen/text_size_eighteen"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:id="@+id/iv_backup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/eight"
+                android:gravity="center_vertical"
+                android:onClick="@{()->viewModel.onBackUp()}"
+                android:padding="@dimen/padding_four"
+                app:layout_constraintEnd_toStartOf="@+id/iv_list"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:srcCompat="@drawable/backup_icon"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="@dimen/eight"/>
+
+            <ImageView
+                android:id="@+id/iv_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/eight"
+                android:gravity="center_vertical"
+                android:onClick="@{()->viewModel.onListClick()}"
+                android:padding="@dimen/padding_four"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:srcCompat="@drawable/list_icon"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="@dimen/eight"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/ll_bottom"
+            android:layout_below="@+id/clToolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_four"
+                android:layout_marginEnd="@dimen/margin_four"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_twenty"
+                    android:text="@string/text_productname"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="@dimen/text_size_fourteen"
+                    android:textStyle="bold"/>
+
+               <!-- <EditText
+                    android:id="@+id/etProductName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:background="@drawable/spinner_white_bg"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 "
+                    android:hint="@string/text_productname"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:padding="@dimen/padding_ten"
+                    android:singleLine="true"
+                    android:text="@={viewModel.productName}"
+                    android:textSize="@dimen/text_size_twelve"/>-->
+
+                    <AutoCompleteTextView
+                        android:id="@+id/etProductName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|start"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 "
+                        android:text="@={viewModel.productName}"
+                        android:textSize="@dimen/text_size_twelve"
+                        android:background="@drawable/spinner_white_bg"
+                        android:hint="@string/text_productname"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:padding="@dimen/padding_ten"
+                        android:singleLine="true">
+                    </AutoCompleteTextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_twenty"
+                    android:text="@string/text_orderid"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="@dimen/text_size_fourteen"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/etOrderId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:background="@drawable/spinner_white_bg"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 "
+                    android:hint="@string/text_orderid"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:padding="@dimen/padding_ten"
+                    android:singleLine="true"
+                    android:text="@={viewModel.orderId}"
+                    android:textSize="@dimen/text_size_twelve"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_twenty"
+                    android:text="@string/text_seller"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="@dimen/text_size_fourteen"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/etSeller"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:background="@drawable/spinner_white_bg"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 "
+                    android:hint="@string/text_seller"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:padding="@dimen/padding_ten"
+                    android:singleLine="true"
+                    android:text="@={viewModel.seller}"
+                    android:textSize="@dimen/text_size_twelve"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_twenty"
+                        android:text="@string/text_status"
+                        android:textAllCaps="false"
+                        android:textColor="@color/dark_grey"
+                        android:textSize="@dimen/text_size_fourteen"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/spinner_white_bg"
+                        android:onClick="@{(v)->viewModel.onStatusSelect()}"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/padding_eight">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:hint="@string/text_status"
+                            android:text="@{viewModel.status}"
+                            android:textSize="@dimen/text_size_twelve"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            app:srcCompat="@drawable/dropdown_icon"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_twenty"
+                            android:text="@string/text_cp"
+                            android:textAllCaps="false"
+                            android:textColor="@color/dark_grey"
+                            android:textSize="@dimen/text_size_fourteen"
+                            android:textStyle="bold"/>
+
+                        <EditText
+                            android:id="@+id/etcp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|start"
+                            android:background="@drawable/spinner_white_bg"
+                            android:digits=".1234567890 "
+                            android:inputType="numberDecimal"
+                            android:hint="@string/text_cp"
+                            android:maxLength="30"
+                            android:maxLines="1"
+                            android:padding="@dimen/padding_ten"
+                            android:singleLine="true"
+                            android:text="@={viewModel.cp}"
+                            android:textSize="@dimen/text_size_twelve"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_four"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_twenty"
+                            android:text="@string/text_sp"
+                            android:textAllCaps="false"
+                            android:textColor="@color/dark_grey"
+                            android:textSize="@dimen/text_size_fourteen"
+                            android:textStyle="bold"/>
+
+                        <EditText
+                            android:id="@+id/etsp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|start"
+                            android:background="@drawable/spinner_white_bg"
+                            android:digits=".1234567890 "
+                            android:inputType="numberDecimal"
+                            android:hint="@string/text_sp"
+                            android:maxLength="30"
+                            android:maxLines="1"
+                            android:padding="@dimen/padding_ten"
+                            android:singleLine="true"
+                            android:text="@={viewModel.sp}"
+                            android:textSize="@dimen/text_size_twelve"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_four"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_twenty"
+                            android:text="@string/text_profit"
+                            android:textAllCaps="false"
+                            android:textColor="@color/dark_grey"
+                            android:textSize="@dimen/text_size_fourteen"
+                            android:textStyle="bold"/>
+
+                        <EditText
+                            android:id="@+id/etprofit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|start"
+                            android:background="@drawable/spinner_white_bg"
+                            android:digits=".1234567890 "
+                            android:inputType="numberDecimal"
+                            android:hint="@string/text_profit"
+                            android:maxLength="30"
+                            android:maxLines="1"
+                            android:padding="@dimen/padding_ten"
+                            android:singleLine="true"
+                            android:text="@={viewModel.profit}"
+                            android:textSize="@dimen/text_size_twelve"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_twenty"
+                    android:text="@string/text_deliveron"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="@dimen/text_size_fourteen"
+                    android:textStyle="bold"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_deliveron"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_white_bg"
+                    android:onClick="@{viewModel::onDateSelect}"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_eight">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:hint="@string/text_deliveron"
+                        android:text="@{viewModel.deliveron}"
+                        android:textSize="@dimen/text_size_twelve"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/calender_icon"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_twenty"
+                            android:text="@string/text_orderon"
+                            android:textAllCaps="false"
+                            android:textColor="@color/dark_grey"
+                            android:textSize="@dimen/text_size_fourteen"
+                            android:textStyle="bold"/>
+
+                        <LinearLayout
+                            android:id="@+id/ll_orderon"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/spinner_white_bg"
+                            android:onClick="@{viewModel::onDateSelect}"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/padding_eight">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:hint="@string/text_orderon"
+                                android:text="@{viewModel.orderOn}"
+                                android:textSize="@dimen/text_size_twelve"/>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                app:srcCompat="@drawable/calender_icon"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_four"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_twenty"
+                            android:text="@string/text_pickon"
+                            android:textAllCaps="false"
+                            android:textColor="@color/dark_grey"
+                            android:textSize="@dimen/text_size_fourteen"
+                            android:textStyle="bold"/>
+
+                        <LinearLayout
+                            android:id="@+id/ll_pickon"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/spinner_white_bg"
+                            android:onClick="@{viewModel::onDateSelect}"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/padding_eight">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:hint="@string/text_pickon"
+                                android:text="@{viewModel.pickOn}"
+                                android:textSize="@dimen/text_size_twelve"/>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                app:srcCompat="@drawable/calender_icon"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_twenty"
+                            android:text="@string/text_returnon"
+                            android:textAllCaps="false"
+                            android:textColor="@color/dark_grey"
+                            android:textSize="@dimen/text_size_fourteen"
+                            android:textStyle="bold"/>
+
+                        <LinearLayout
+                            android:id="@+id/ll_returnon"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/spinner_white_bg"
+                            android:onClick="@{viewModel::onDateSelect}"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/padding_eight">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:hint="@string/text_returnon"
+                                android:text="@{viewModel.returnOn}"
+                                android:textSize="@dimen/text_size_twelve"/>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                app:srcCompat="@drawable/calender_icon"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_four"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_twenty"
+                            android:text="@string/text_cancelon"
+                            android:textAllCaps="false"
+                            android:textColor="@color/dark_grey"
+                            android:textSize="@dimen/text_size_fourteen"
+                            android:textStyle="bold"/>
+
+                        <LinearLayout
+                            android:id="@+id/ll_cancelon"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/spinner_white_bg"
+                            android:onClick="@{viewModel::onDateSelect}"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/padding_eight">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:hint="@string/text_cancelon"
+                                android:text="@{viewModel.cancelOn}"
+                                android:textSize="@dimen/text_size_twelve"/>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                app:srcCompat="@drawable/calender_icon"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_twenty"
+                            android:text="@string/text_credit"
+                            android:textAllCaps="false"
+                            android:textColor="@color/dark_grey"
+                            android:textSize="@dimen/text_size_fourteen"
+                            android:textStyle="bold"/>
+
+                        <EditText
+                            android:id="@+id/etcredit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|start"
+                            android:background="@drawable/spinner_white_bg"
+                            android:digits=".1234567890 "
+                            android:inputType="numberDecimal"
+                            android:hint="@string/text_credit"
+                            android:maxLength="30"
+                            android:maxLines="1"
+                            android:padding="@dimen/padding_ten"
+                            android:singleLine="true"
+                            android:text="@={viewModel.creditamt}"
+                            android:textSize="@dimen/text_size_twelve"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_four"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_twenty"
+                            android:text="@string/text_crediton"
+                            android:textAllCaps="false"
+                            android:textColor="@color/dark_grey"
+                            android:textSize="@dimen/text_size_fourteen"
+                            android:textStyle="bold"/>
+
+                        <LinearLayout
+                            android:id="@+id/ll_crediton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/spinner_white_bg"
+                            android:onClick="@{viewModel::onDateSelect}"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/padding_eight">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:hint="@string/text_crediton"
+                                android:text="@{viewModel.creditOn}"
+                                android:textSize="@dimen/text_size_twelve"/>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                app:srcCompat="@drawable/calender_icon"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/ll_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorAccent"
+            android:onClick="@{viewModel::onSave}"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/margin_ten"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+</layout>

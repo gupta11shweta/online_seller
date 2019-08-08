@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">PE</string>
+    <string name="title_activity_record_list">RecordListActivity</string>
+    <string name="no_data_available">No data available.</string>
+    <string name="text_productname">Product Name</string>
+    <string name="text_orderid">Order Id</string>
+    <string name="text_seller">Seller</string>
+    <string name="text_orderon">Order On</string>
+    <string name="text_pickon">Pick On</string>
+    <string name="text_cancelon">Cancel On</string>
+    <string name="text_returnon">Return On</string>
+    <string name="text_sp">SP</string>
+    <string name="text_cp">CP</string>
+    <string name="text_profit">Profit</string>
+    <string name="text_crediton">Credit On</string>
+    <string name="text_credit">Credit Amt.</string>
+    <string name="save">Save</string>
+    <string name="text_status">Status</string>
+    <string name="action_search">Search</string>
+    <string name="saved">Saved Successfully !</string>
+    <string name="pe_orders">PE Orders</string>
+    <string name="permission_required">Permission Required</string>
+    <string name="storage_permission">Storage Permission Needed</string>
+    <string name="dialog_ok">Ok</string>
+    <string name="text_deliveron">Deliver On</string>
+    <string name="no_data">No data to save</string>
+    <string name="no_order_id">Please enter Order Id</string>
+
+    <string-array name="status_name">
+        <item>Ordered</item>
+        <item>Picked Up</item>
+        <item>Delivered</item>
+        <item>Pending</item>
+        <item>Cancelled</item>
+        <item>Returned</item>
+    </string-array>
+
+
+    <!--<string-array name="status_color">
+        <item>@color/order_color</item>
+        <item>@color/pickup_color</item>
+        <item>@color/deliver_color</item>
+        <item>@color/pending_color</item>
+        <item>@color/cancel_color</item>
+        <item>@color/return_color</item>
+    </string-array >-->
+    <string-array name="status_color">
+        <item>#FFEB49</item>
+        <item>#8739b54a</item>
+        <item>#39B54A</item>
+        <item>#fdba6f</item>
+        <item>#EB2C3C</item>
+        <item>#919191</item>
+    </string-array >
+
+</resources>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="orderDTO"
+            type="com.test.myapplication.model.OrderDTO" />
+
+        <variable
+            name="handler"
+            type="com.test.myapplication.handler.OnClickHandler" />
+
+        <variable
+            name="viewmodel"
+            type="com.test.myapplication.viewModel.RecordListViewModel" />
+
+    </data>
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_two"
+        android:background="@drawable/rectangle_white_bg"
+        android:padding="@dimen/padding_two"
+        tools:context=".view.activity.RequestListAcitivty">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="42dp"
+            android:layout_height="0dp"
+            app:statuscolor="@{orderDTO.status}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/deliver_color">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:rotation="-90"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_twelve"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@{orderDTO.status}"
+                tools:text="Delivered" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvDomain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{orderDTO.product}"
+            android:textColor="@color/dark_grey"
+            android:textSize="@dimen/text_size_sixteen"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="MIND-SW" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/dark_grey"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDomain"
+            app:layout_constraintEnd_toStartOf="@+id/tvCreatedBy"
+            app:layout_constraintStart_toEndOf="@+id/tvDomain"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
+
+
+        <TextView
+            android:id="@+id/tvCreatedBy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:paddingStart="4dp"
+            android:singleLine="true"
+            android:text="@{orderDTO.orderOn}"
+            android:textColor="@color/dark_grey"
+            android:textSize="@dimen/text_size_sixteen"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvDomain"
+            app:layout_constraintTop_toTopOf="@+id/tvDomain"
+            tools:text="Pawan Kumar"
+            android:visibility="gone"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/stroke_grey"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDomain"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout4" />
+
+
+        <TextView
+            android:id="@+id/tvRequestNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{orderDTO.seller}"
+            android:textColor="@color/text_TR_grey"
+            android:textSize="@dimen/text_size_sixteen"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            tools:text="MIND/DOM/123456" />
+
+        <TextView
+            android:id="@+id/tvCity"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:paddingEnd="@dimen/two"
+            android:singleLine="true"
+            android:text="@{orderDTO.orderId}"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_sixteen"
+            app:layout_constraintEnd_toStartOf="@+id/iv_edit"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
+            app:layout_constraintTop_toBottomOf="@+id/tvRequestNumber"
+            tools:text="Delhi,India-Berlin,Germany" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:statusdate="@{orderDTO}"
+            android:textColor="@color/dark_grey"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
+            app:layout_constraintTop_toBottomOf="@+id/tvCity"
+            tools:text="05 Sep 2018-10 Sep 2018 | 10 days" />
+
+        <TextView
+            android:id="@+id/tvRemark"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/eight"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textStyle="bold"
+            android:textColor="@color/dark_grey"
+            android:layout_marginTop="@dimen/eight"
+            android:text='@{"Cost : " + orderDTO.cp+ " Rs"}'
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvDate"
+            app:layout_constraintTop_toBottomOf="@+id/tvDate"
+            tools:text="STARS Anual meeting for new enhancement." />
+
+            <TextView
+                android:id="@+id/tvAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/eight"
+                android:text='@{"Selling : " + orderDTO.sp+ " Rs"}'
+                android:textColor="@color/dark_grey"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvRemark"
+                app:layout_constraintTop_toBottomOf="@+id/tvRemark"
+                tools:text="INR 1,82,000.00" />
+
+        <ImageView
+            android:id="@+id/iv_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/eight"
+            android:gravity="center"
+            android:onClick="@{()->handler.onClick(orderDTO)}"
+            android:padding="@dimen/padding_four"
+            app:srcCompat="@drawable/edit_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="@dimen/eight" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

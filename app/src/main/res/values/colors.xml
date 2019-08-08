@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f2c935</color>
+    <color name="colorPrimaryDark">#FFEB49</color>
+    <color name="colorAccent">#D81B60</color>
+
+
+    <color name="white">#ffffff</color>
+    <color name="stroke_grey">#EBEBEB</color>
+    <color name="text_TR_grey">#4A5B6A</color>
+    <color name="dark_grey">#3D3C3E</color>
+
+    <color name="order_color">#f2c935</color>
+    <color name="pickup_color">#03DAC1</color>
+    <color name="deliver_color">#39B54A</color>
+    <color name="pending_color">#fdba6f</color>
+    <color name="return_color">#EB2C3C</color>
+    <color name="cancel_color">#919191</color>
+    <color name="black">#000000</color>
+
+
+</resources>

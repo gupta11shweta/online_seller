@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.test.myapplication.viewModel.RecordListViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.RecordListActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/barlayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:background="@color/colorPrimaryDark">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search by name,id,status"
+                app:closeIcon="@drawable/cancel_icon"
+                app:searchIcon="@drawable/search_icon"
+                android:textSize="@dimen/text_size_sixteen"
+                android:theme="@style/Theme.Search"
+                android:visibility="@{viewModel.search?View.GONE:View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+           <!-- <ImageView
+                android:id="@+id/iv_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/eight"
+                android:gravity="center"
+                android:padding="@dimen/padding_four"
+                app:srcCompat="@drawable/search_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCreatedBy"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="@dimen/eight" />-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/no_data_available"
+            android:textSize="18sp"
+            android:visibility="@{viewModel.isDataAvailable ? View.GONE : View.VISIBLE}" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/barlayout"
+            android:layout_marginTop="@dimen/margin_four"
+            android:padding="@dimen/padding_two"
+            tools:listitem = "@layout/row_item_order_list"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="@{viewModel.progressBar ? View.VISIBLE : View.GONE}"/>
+
+    </RelativeLayout>
+
+</layout>

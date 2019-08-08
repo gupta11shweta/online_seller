@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:id="@+id/clToolbar"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="@dimen/toolbar_height"
+                                             android:background="@color/colorPrimaryDark">
+
+    <ImageView
+        android:id="@+id/iv_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/eight"
+        android:gravity="center"
+        android:onClick="@{()->handler.onClick(orderDTO)}"
+        android:padding="@dimen/padding_four"
+        app:srcCompat="@drawable/list_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCreatedBy"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="@dimen/eight" />
+
+    <ImageView
+        android:id="@+id/iv_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/eight"
+        android:gravity="center"
+        android:onClick="@{()->handler.onClick(orderDTO)}"
+        android:padding="@dimen/padding_four"
+        app:srcCompat="@drawable/search_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCreatedBy"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="@dimen/eight" />
+
+</android.support.constraint.ConstraintLayout>
+
